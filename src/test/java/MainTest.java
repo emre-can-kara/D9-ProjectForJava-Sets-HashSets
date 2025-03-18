@@ -3,14 +3,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.instanceOf;
 import java.lang.reflect.Field;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import static org.hamcrest.Matchers.instanceOf;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(ResultAnalyzer.class)
@@ -27,11 +26,14 @@ public class MainTest {
     @BeforeEach
     void setUp() {
         task1 = new Task("Java Collections", "Write List Interface",
-                "Ann", Status.IN_QUEUE, Priority.LOW);
+                "Ann", Priority.LOW, Status.IN_QUEUE);
+
         task2 = new Task("Java Collections", "Write Set Interface",
-                "Ann", Status.ASSIGNED, Priority.MED);
+                "Ann", Priority.MED, Status.ASSIGNED);
+
         task3 = new Task("Java Collections", "Write Map Interface",
-                "Bob", Status.IN_QUEUE, Priority.HIGH);
+                "Bob", Priority.HIGH, Status.IN_QUEUE);
+
 
         taskSet1 = new HashSet<>();
         taskSet1.add(task1);
